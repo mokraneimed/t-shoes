@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 
 class TaskProvider extends ChangeNotifier {
   int selectedIndex = 1;
+  List favourites = [nike1, nike2];
   List<String> sectionsTitles = ['Popular', 'Nike', 'Adidas', 'l3abid'];
   static var nike1 = {
-    'name': 'Nike1',
+    'name': 'ike1',
     'color': Colors.red,
     'url': "assets/njrebl7mer.png",
     'liked': true,
@@ -60,10 +61,23 @@ class TaskProvider extends ChangeNotifier {
   }
 
   void like(Map shoe) {
-    (shoe['liked'])
-        ? shoe['likes'] = shoe['likes'] - 1
-        : shoe['likes'] = shoe['likes'] + 1;
+    if (shoe['liked']) {
+      shoe['likes'] = shoe['likes'] - 1;
+      favourites.remove(shoe);
+    } else {
+      shoe['likes'] = shoe['likes'] + 1;
+      favourites.add(shoe);
+    }
     shoe['liked'] = !shoe['liked'];
+    notifyListeners();
+  }
+
+  void removeFavourites(int index) {
+    Map shoe;
+    shoe = favourites[index];
+    favourites.removeAt(index);
+    shoe['liked'] = false;
+    shoe['likes']--;
     notifyListeners();
   }
 }

@@ -5,15 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:t_shoes/homepage.dart';
 import 'package:t_shoes/searchpage.dart';
 import 'package:t_shoes/provider.dart';
+import 'package:t_shoes/favourites_page.dart';
 
 final GlobalKey<FormState> _inputKey = GlobalKey();
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 final textController = TextEditingController();
 List<Widget> _pages = <Widget>[
-  Icon(
-    Icons.call,
-    size: 150,
-  ),
+  FavouritesPage(),
   HomePage(),
   SearchPage(),
 ];
@@ -41,7 +39,6 @@ class MyApp extends StatelessWidget {
               home: Consumer<TaskProvider>(
                   builder: (context, taskProvider, child) {
                 final selectedIndex = taskProvider.selectedIndex;
-
                 return Scaffold(
                   bottomNavigationBar: BottomNavigationBar(
                     backgroundColor: Colors.black,

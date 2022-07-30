@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:t_shoes/search_router.dart';
+import 'dart:convert';
+
+var name_textController = TextEditingController();
+var color_textController = TextEditingController();
+var max_price_textController = TextEditingController();
+var min_price_textController = TextEditingController();
+var max_rat_textController = TextEditingController();
+var min_rat_textController = TextEditingController();
+
+var name, color;
+var max_price, min_price, max_rat, min_rat;
 
 class SearchPage extends StatelessWidget {
   @override
@@ -49,16 +61,18 @@ class SearchPage extends StatelessWidget {
                       border: Border.all(color: Colors.white38),
                       borderRadius: BorderRadius.circular(80)),
                   child: TextField(
+                      controller: name_textController,
+                      style: TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
-                    isDense: true,
-                    hintText: "...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'font',
-                    ),
-                  )))
+                        contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
+                        isDense: true,
+                        hintText: "...",
+                        hintStyle: TextStyle(
+                          color: Colors.white38,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'font',
+                        ),
+                      )))
             ],
           ),
           SizedBox(
@@ -89,16 +103,18 @@ class SearchPage extends StatelessWidget {
                       border: Border.all(color: Colors.white38),
                       borderRadius: BorderRadius.circular(80)),
                   child: TextField(
+                      controller: color_textController,
+                      style: TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
-                    isDense: true,
-                    hintText: "...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'font',
-                    ),
-                  )))
+                        contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
+                        isDense: true,
+                        hintText: "...",
+                        hintStyle: TextStyle(
+                          color: Colors.white38,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'font',
+                        ),
+                      )))
             ],
           ),
           SizedBox(
@@ -127,16 +143,18 @@ class SearchPage extends StatelessWidget {
                       border: Border.all(color: Colors.white38),
                       borderRadius: BorderRadius.circular(80)),
                   child: TextField(
+                      controller: min_price_textController,
+                      style: TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
-                    isDense: true,
-                    hintText: "...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'font',
-                    ),
-                  ))),
+                        contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
+                        isDense: true,
+                        hintText: "...",
+                        hintStyle: TextStyle(
+                          color: Colors.white38,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'font',
+                        ),
+                      ))),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.13,
               ),
@@ -161,16 +179,18 @@ class SearchPage extends StatelessWidget {
                       border: Border.all(color: Colors.white38),
                       borderRadius: BorderRadius.circular(80)),
                   child: TextField(
+                      controller: max_price_textController,
+                      style: TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
-                    isDense: true,
-                    hintText: "...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'font',
-                    ),
-                  ))),
+                        contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
+                        isDense: true,
+                        hintText: "...",
+                        hintStyle: TextStyle(
+                          color: Colors.white38,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'font',
+                        ),
+                      ))),
             ],
           ),
           SizedBox(
@@ -199,16 +219,18 @@ class SearchPage extends StatelessWidget {
                       border: Border.all(color: Colors.white38),
                       borderRadius: BorderRadius.circular(80)),
                   child: TextField(
+                      controller: min_rat_textController,
+                      style: TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
-                    isDense: true,
-                    hintText: "...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'font',
-                    ),
-                  ))),
+                        contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
+                        isDense: true,
+                        hintText: "...",
+                        hintStyle: TextStyle(
+                          color: Colors.white38,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'font',
+                        ),
+                      ))),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.13,
               ),
@@ -231,18 +253,20 @@ class SearchPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.black,
                       border: Border.all(color: Colors.white38),
-                      borderRadius: BorderRadius.circular(80)),
+                      borderRadius: BorderRadius.circular(35)),
                   child: TextField(
+                      controller: max_rat_textController,
+                      style: TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
-                    isDense: true,
-                    hintText: "...",
-                    hintStyle: TextStyle(
-                      color: Colors.white38,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'font',
-                    ),
-                  ))),
+                        contentPadding: EdgeInsets.fromLTRB(22, 12, 0, 12),
+                        isDense: true,
+                        hintText: "...",
+                        hintStyle: TextStyle(
+                          color: Colors.white38,
+                          fontStyle: FontStyle.italic,
+                          fontFamily: 'font',
+                        ),
+                      ))),
             ],
           ),
           SizedBox(
@@ -255,7 +279,46 @@ class SearchPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30.0),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              name = name_textController.text;
+              color = color_textController.text;
+              if (min_price_textController.text != '') {
+                min_price = int.parse(min_price_textController.text);
+              } else {
+                min_price = 0;
+              }
+              if (max_price_textController.text != '') {
+                max_price = int.parse(max_price_textController.text);
+              } else {
+                max_price = 9999;
+              }
+              if (min_rat_textController.text != '') {
+                min_rat = int.parse(min_rat_textController.text);
+              } else {
+                min_rat = 0;
+              }
+              if (max_rat_textController.text != '') {
+                max_rat = int.parse(max_rat_textController.text);
+              } else {
+                max_rat = 9999;
+              }
+              FocusScopeNode currentFocus = FocusScope.of(context);
+              if (!currentFocus.hasPrimaryFocus &&
+                  currentFocus.focusedChild != null) {
+                FocusManager.instance.primaryFocus?.unfocus();
+              }
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SearchRouter(
+                          name: name,
+                          color: color,
+                          min_price: min_price,
+                          max_price: max_price,
+                          min_rat: min_rat,
+                          max_rat: max_rat)));
+            },
             child: Text(
               'Search',
               style: TextStyle(

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:line_icons/line_icons.dart';
@@ -6,6 +7,9 @@ import 'package:t_shoes/homepage.dart';
 import 'package:t_shoes/searchpage.dart';
 import 'package:t_shoes/provider.dart';
 import 'package:t_shoes/favourites_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:t_shoes/data_firebase.dart';
 
 final GlobalKey<FormState> _inputKey = GlobalKey();
 final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -14,10 +18,14 @@ List<Widget> _pages = <Widget>[
   FavouritesPage(),
   HomePage(),
   SearchPage(),
+  tryFirebase(),
 ];
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -41,6 +49,7 @@ class MyApp extends StatelessWidget {
                 final selectedIndex = taskProvider.selectedIndex;
                 return Scaffold(
                   bottomNavigationBar: BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
                     backgroundColor: Colors.black,
                     selectedItemColor: Colors.yellow,
                     unselectedItemColor: Colors.white,
@@ -58,6 +67,10 @@ class MyApp extends StatelessWidget {
                       ),
                       BottomNavigationBarItem(
                         icon: Icon(Icons.search),
+                        label: '.',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.fire_hydrant),
                         label: '.',
                       ),
                     ],

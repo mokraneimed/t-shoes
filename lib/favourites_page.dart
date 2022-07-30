@@ -47,7 +47,7 @@ class FavouritesPage extends StatelessWidget {
                                         border:
                                             Border.all(color: Colors.white38),
                                         borderRadius:
-                                            BorderRadius.circular(50)),
+                                            BorderRadius.circular(35)),
                                     child: Center(
                                         child: ListTile(
                                             leading: Image.asset(shoe['url'],

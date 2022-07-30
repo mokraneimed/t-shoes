@@ -1,24 +1,29 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 class TaskProvider extends ChangeNotifier {
   int selectedIndex = 1;
+  bool firstrun = true;
   List favourites = [nike1, nike2];
   List<String> sectionsTitles = ['Popular', 'Nike', 'Adidas', 'l3abid'];
   static var nike1 = {
-    'name': 'ike1',
+    'name': 'Nike1',
     'color': Colors.red,
     'url': "assets/njrebl7mer.png",
     'liked': true,
-    'likes': 4
+    'likes': 4,
+    'price': 100,
   };
   static var nike2 = {
     'name': 'Nike2',
     'color': Colors.blue,
     'url': "assets/hh.png",
     'liked': true,
-    'likes': 5
+    'likes': 5,
+    'price': 200
   };
   var nike3 = {
     'name': 'Nike3',
@@ -32,7 +37,8 @@ class TaskProvider extends ChangeNotifier {
     'color': Colors.green,
     'url': "assets/njreb.png",
     'liked': false,
-    'likes': 7
+    'likes': 7,
+    'price': 500
   };
   var adidas1 = {
     'name': 'adidas1',
@@ -69,6 +75,7 @@ class TaskProvider extends ChangeNotifier {
       favourites.add(shoe);
     }
     shoe['liked'] = !shoe['liked'];
+    firstrun = false;
     notifyListeners();
   }
 

@@ -5,10 +5,13 @@ import 'package:provider/provider.dart';
 
 class Shoe extends StatelessWidget {
   Map shoe;
-  Shoe({required this.shoe});
+  String sectionTitle;
+  Shoe({Key? key, required this.shoe, required this.sectionTitle})
+      : super(key: key);
   Widget build(BuildContext context) {
     var name = shoe['name'];
     var likes = shoe['likes'];
+    var price = shoe['price'];
 
     return Consumer<TaskProvider>(builder: (context, taskProvider, child) {
       return Container(
@@ -29,13 +32,15 @@ class Shoe extends StatelessWidget {
                           ),
                         ))),
                 Container(
-                  margin: EdgeInsets.only(right: 10),
-                  child: Image.asset(
-                    shoe['url'],
-                    width: 120,
-                    height: 120,
-                  ),
-                )
+                    margin: EdgeInsets.only(right: 10),
+                    child: Hero(
+                      tag: shoe['name'] + sectionTitle,
+                      child: Image.asset(
+                        shoe['url'],
+                        width: 120,
+                        height: 120,
+                      ),
+                    ))
               ]),
               Container(
                 width: MediaQuery.of(context).size.width * 0.35,
@@ -104,7 +109,7 @@ class Shoe extends StatelessWidget {
               SizedBox(
                 height: 7,
               ),
-              Text('\$300',
+              Text('$price',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,

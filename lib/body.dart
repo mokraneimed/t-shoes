@@ -7,10 +7,10 @@ import 'package:t_shoes/provider.dart';
 import 'package:provider/provider.dart';
 import 'package:t_shoes/second_router.dart';
 
-final GlobalKey<FormState> _inputKey = GlobalKey();
-final GlobalKey<ScaffoldState> _key = GlobalKey();
-final textController = TextEditingController();
-bool firstRun = true;
+GlobalKey<FormState> _inputKey = GlobalKey();
+GlobalKey<ScaffoldState> _key = GlobalKey();
+var textController = TextEditingController();
+late bool firstRun;
 ScrollController _scrollController = ScrollController();
 List<bool> slides = [true, true, false];
 int duration = 500;
@@ -92,6 +92,9 @@ class _MyStatefulWidgetState extends State<Body> with TickerProviderStateMixin {
                   itemCount: taskProvider.sections.length,
                   itemBuilder: (context, index) {
                     List section = taskProvider.sections[index];
+                    if (slides[2] == false) {
+                      firstRun = taskProvider.firstrun;
+                    }
                     if (firstRun) {
                       _controller = AnimationController(
                           duration: Duration(milliseconds: duration),
@@ -152,19 +155,33 @@ class _MyStatefulWidgetState extends State<Body> with TickerProviderStateMixin {
                                                           Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    SecondRouter(
-                                                                        shoe: section[
-                                                                            index2])),
+                                                                builder:
+                                                                    (context) =>
+                                                                        SecondRouter(
+                                                                          shoe:
+                                                                              section[index2],
+                                                                          sectionTitle:
+                                                                              taskProvider.sectionsTitles[index],
+                                                                        )),
                                                           );
                                                         },
                                                         child: (index == 0)
                                                             ? PopularShoe(
                                                                 shoe: section[
-                                                                    index2])
+                                                                    index2],
+                                                                sectionTitle:
+                                                                    taskProvider
+                                                                            .sectionsTitles[
+                                                                        index],
+                                                              )
                                                             : Shoe(
                                                                 shoe: section[
-                                                                    index2])),
+                                                                    index2],
+                                                                sectionTitle:
+                                                                    taskProvider
+                                                                            .sectionsTitles[
+                                                                        index],
+                                                              )),
                                                     SizedBox(
                                                       width:
                                                           MediaQuery.of(context)
@@ -189,19 +206,34 @@ class _MyStatefulWidgetState extends State<Body> with TickerProviderStateMixin {
                                                       Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                SecondRouter(
-                                                                    shoe: section[
-                                                                        index2])),
+                                                            builder:
+                                                                (context) =>
+                                                                    SecondRouter(
+                                                                      shoe: section[
+                                                                          index2],
+                                                                      sectionTitle:
+                                                                          taskProvider
+                                                                              .sectionsTitles[index],
+                                                                    )),
                                                       );
                                                     },
                                                     child: (index == 0)
                                                         ? PopularShoe(
                                                             shoe:
-                                                                section[index2])
+                                                                section[index2],
+                                                            sectionTitle:
+                                                                taskProvider
+                                                                        .sectionsTitles[
+                                                                    index],
+                                                          )
                                                         : Shoe(
-                                                            shoe: section[
-                                                                index2])),
+                                                            shoe:
+                                                                section[index2],
+                                                            sectionTitle:
+                                                                taskProvider
+                                                                        .sectionsTitles[
+                                                                    index],
+                                                          )),
                                                 SizedBox(
                                                   width: MediaQuery.of(context)
                                                           .size
@@ -226,19 +258,34 @@ class _MyStatefulWidgetState extends State<Body> with TickerProviderStateMixin {
                                                       Navigator.push(
                                                         context,
                                                         MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                SecondRouter(
-                                                                    shoe: section[
-                                                                        index2])),
+                                                            builder:
+                                                                (context) =>
+                                                                    SecondRouter(
+                                                                      shoe: section[
+                                                                          index2],
+                                                                      sectionTitle:
+                                                                          taskProvider
+                                                                              .sectionsTitles[index],
+                                                                    )),
                                                       );
                                                     },
                                                     child: (index == 0)
                                                         ? PopularShoe(
                                                             shoe:
-                                                                section[index2])
+                                                                section[index2],
+                                                            sectionTitle:
+                                                                taskProvider
+                                                                        .sectionsTitles[
+                                                                    index],
+                                                          )
                                                         : Shoe(
-                                                            shoe: section[
-                                                                index2])),
+                                                            shoe:
+                                                                section[index2],
+                                                            sectionTitle:
+                                                                taskProvider
+                                                                        .sectionsTitles[
+                                                                    index],
+                                                          )),
                                                 SizedBox(
                                                   width: MediaQuery.of(context)
                                                           .size

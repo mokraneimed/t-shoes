@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>199387402468-p5sdrm3b7tecgpdfpha6jr0vv2su690u.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.199387402468-p5sdrm3b7tecgpdfpha6jr0vv2su690u</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAp0SFZ6u2sQrTTJfgWJoa1GFSDenb6PUo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>199387402468</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.tShoes</string>
+	<key>PROJECT_ID</key>
+	<string>t-shoes-c6936</string>
+	<key>STORAGE_BUCKET</key>
+	<string>t-shoes-c6936.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:199387402468:ios:72dbe597d3f77d108e9cf1</string>
+</dict>
+</plist>

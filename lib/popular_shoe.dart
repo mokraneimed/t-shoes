@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 
 class PopularShoe extends StatelessWidget {
   Map shoe;
-  PopularShoe({required this.shoe});
+  String sectionTitle;
+  PopularShoe({required this.shoe, required this.sectionTitle});
   Widget build(BuildContext context) {
     var name = shoe['name'];
+    var price = shoe['price'];
     return Container(
         width: 315,
         child: Column(children: [
@@ -66,7 +68,7 @@ class PopularShoe extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    '\$551',
+                    '$price',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -109,14 +111,16 @@ class PopularShoe extends StatelessWidget {
                         ),
                       ))),
               Positioned(
-                top: 12,
-                right: 18,
-                child: Image.asset(
-                  shoe['url'],
-                  width: 120,
-                  height: 120,
-                ),
-              )
+                  top: 12,
+                  right: 18,
+                  child: Hero(
+                    tag: shoe['name'] + sectionTitle,
+                    child: Image.asset(
+                      shoe['url'],
+                      width: 120,
+                      height: 120,
+                    ),
+                  ))
             ]),
           )
         ]));
